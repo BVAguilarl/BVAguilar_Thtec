@@ -18,7 +18,7 @@ namespace BL
                 using (DL.BVAguilar_ThtecEntities context = new DL.BVAguilar_ThtecEntities())
                 {
                     persona.FechaDeAlta = DateTime.Now;
-                    DateTime fechaNacimiento = DateTime.ParseExact(persona.FechaDeNacimiento, "MM/dd/yyyy", CultureInfo.InvariantCulture);
+                    DateTime fechaNacimiento = DateTime.ParseExact(persona.FechaDeNacimiento, "dd-MM-yyyy", CultureInfo.InvariantCulture);
 
                     var query = context.AddPersona(persona.Nombre,
                                                    persona.ApellidoPaterno,
@@ -59,7 +59,7 @@ namespace BL
             {
                 using (DL.BVAguilar_ThtecEntities context = new DL.BVAguilar_ThtecEntities())
                 {
-                    DateTime fechaNacimiento = DateTime.ParseExact(persona.FechaDeNacimiento, "MM/dd/yyyy", CultureInfo.InvariantCulture);
+                    DateTime fechaNacimiento = DateTime.ParseExact(persona.FechaDeNacimiento, "dd-MM-yyyy", CultureInfo.InvariantCulture);
 
                     var query = context.UpdatePersona(persona.IdPersona,
                                                       persona.Nombre,
