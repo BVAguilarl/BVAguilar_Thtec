@@ -1,0 +1,106 @@
+﻿@model ML.Persona
+
+@{
+    ViewBag.Title = "Form";
+}
+
+@if (Model.IdPersona != 0)
+{
+    <h2> Actualizar datos de la persona</h2>
+    <hr />
+}
+else
+{
+    <h2>Registrar nuevos datos de la persona</h2>
+    <hr />
+}
+
+
+<br />
+
+@using (Html.BeginForm("Form", "Persona", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="row">
+        @* el idusuario no se debe mostrar *@
+        <div class="col-md-6">
+            @Html.LabelFor(model => Model.IdPersona, new { @class = "visually-hidden" })
+            @Html.TextBoxFor(model => Model.IdPersona, new { @class = "form-control visually-hidden" })
+        </div>
+    </div>
+
+    <div class="row justify-content-end">
+        <div class="col-md-6 text-center">
+            @Html.HiddenFor(model => Model.FechaDeAlta)
+
+            @if (Model.FechaDeAlta != DateTime.MinValue)
+            {
+                @Html.LabelFor(model => Model.FechaDeAlta, new { @class = "text-center" })
+                @Html.TextBoxFor(model => Model.FechaDeAlta, new { @class = "form-control text-center mx-auto", @disabled = "disabled" })
+            }
+            else
+            {
+                @Html.LabelFor(model => Model.FechaDeAlta, new { @class = "visually-hidden" })
+                @Html.TextBoxFor(model => Model.FechaDeAlta, new { @class = "visually-hidden" })
+            }
+        </div>
+    </div>
+
+    <br />
+    <hr />
+    <br />
+
+    <div class="row">
+        <div class="col-md-4">
+            @Html.LabelFor(model => Model.Nombre, new { @class = "text-center" })
+            @Html.TextBoxFor(model => Model.Nombre, new { @class = "form-control" })
+        </div>
+        <div class="col-md-4">
+            @Html.LabelFor(model => Model.ApellidoPaterno, new { @class = "text-center" })
+            @Html.TextBoxFor(model => Model.ApellidoPaterno, new { @class = "form-control" })
+        </div>
+        <div class="col-md-4">
+            @Html.LabelFor(model => Model.ApellidoMaterno, new { @class = "text-center" })
+            @Html.TextBoxFor(model => Model.ApellidoMaterno, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <br />
+
+    <div class="row">
+        <div class="col-md-4">
+            @Html.LabelFor(model => Model.Telefono, new { @class = "text-center" })
+            @Html.TextBoxFor(model => Model.Telefono, new { @class = "form-control" })
+        </div>
+        <div class="col-md-4">
+            @Html.LabelFor(model => Model.Correo, new { @class = "text-center" })
+            @Html.TextBoxFor(model => Model.Correo, new { @class = "form-control" })
+        </div>
+        <div class="col-md-4">
+            @Html.LabelFor(model => Model.Contraseña, new { @class = "text-center" })
+            @Html.TextBoxFor(model => Model.Contraseña, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <br />
+
+    <div class="row">
+        <div class="col-md-4">
+            @Html.LabelFor(model => Model.FechaDeNacimiento, new { @class = "text-center" })
+            @Html.TextBoxFor(model => Model.FechaDeNacimiento, new { @class = "form-control", @type = "date" })
+        </div>
+    </div>
+
+    <br />
+
+    <div class="row">
+        @*botones*@
+        <div class="col-md-1 ">
+            <input type="submit" data-toggle="modal" data-target="#modalValidation" class="btn btn-success" value="Guardar" />
+        </div>
+
+        <div class="col-md-1">
+            @Html.ActionLink("Cancelar", "GetAll", "Persona", new { @class = "btn btn-danger" })
+        </div>
+    </div>
+}
+

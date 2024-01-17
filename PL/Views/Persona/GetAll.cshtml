@@ -1,0 +1,84 @@
+﻿@model ML.Persona
+
+@{
+    ViewBag.Title = "GetAll";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Persona</h2>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <h5>Seleccione la persona existente para editar sus datos o + para agregar nuevos datos de otra persona.</h5>
+            <hr />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-1 col-md-offset-11">
+            @Html.ActionLink("+", "Form", "Persona", htmlAttributes: new { @class = "btn btn-success" })
+        </div>
+    </div>
+
+    <br />
+
+    @if (Model.Personas.Count > 0)
+    {
+        <div class="row">
+            <div class="col-md-12">
+                <div class="table-responsive-sm table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th class="text-center">Editar</th>
+                                <th class="hidden">IdPersona</th>
+                                <th class="text-center">Nombre</th>
+                                <th class="text-center">Telefono</th>
+                                <th class="text-center">Correo</th>
+                                <th class="hidden">Contraseña</th>
+                                <th class="text-center">Fecha de Nacimiento</th>
+                                <th class="text-center">Fecha de Alta</th>
+                                <th class="text-center">Eliminar</th>
+                            </tr>
+                        </thead>
+
+
+                        <tbody>
+                            @foreach (ML.Persona persona in Model.Personas)
+                            {
+                                <tr>
+                                    <td class="text-center">
+                                        <a class="btn btn-warning glyphicon glyphicon-edit" href="@Url.Action("Form", "Persona", new { IdPersona = persona.IdPersona})"></a>
+                                    </td>
+                                    <td class="hidden">@persona.IdPersona</td>
+                                    <td>@persona.Nombre @persona.ApellidoPaterno @persona.ApellidoMaterno </td>
+                                    <td class="text-center">@persona.Telefono</td>
+                                    <td class="text-center">@persona.Correo</td>
+                                    <td class="text-center">@persona.Contraseña</td>
+                                    <td class="text-center">@persona.FechaDeNacimiento</td>
+                                    <td class="text-center">@persona.FechaDeAlta</td>
+                                    <td class="text-center">
+                                        <a class="btn btn-danger glyphicon glyphicon-trash" href="@Url.Action("Delete", "Persona", new {persona.IdPersona})" onclick="return confirm('Estas seguro que deseas eliminar este registro?');"></a>
+                                    </td>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+
+    }
+    else
+    {
+        <div class="alert alert-danger" role="alert">Aun no hay personas registradas en el sistema. Da click en + para agregar los datos de una persona. </div>
+    }
+
+</div>
+
