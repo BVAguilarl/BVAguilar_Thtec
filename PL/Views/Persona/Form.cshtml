@@ -85,12 +85,17 @@ else
 
     <div class="row">
         <div class="col-md-4">
-            @Html.LabelFor(model => Model.FechaDeNacimiento, new { @class = "text-center" })
-            @Html.TextBoxFor(model => Model.FechaDeNacimiento, new { @class = "form-control", @type = "date" })
+            @Html.LabelFor(model => Model.FechaDeNacimiento, new { @class = "text-center" })}
+
+            <div style="display: flex; align-items: center;">
+                @Html.TextBoxFor(model => Model.FechaDeNacimiento, new { @class = "form-control", @id = "txtFechaNacimiento" })
+            </div>
         </div>
     </div>
 
     <br />
+
+
 
     <div class="row">
         @*botones*@
@@ -104,3 +109,31 @@ else
     </div>
 }
 
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js" type="text/javascript"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js" type="text/javascript"></script>
+<link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="Stylesheet" type="text/css" />
+
+<script type="text/javascript">
+    var j = jQuery.noConflict();
+
+    j(function () {
+        j("#txtFechaNacimiento").datepicker({
+            dateFormat: 'dd-mm-yyyy',
+            showOn: 'button',
+            buttonImage: "https://cdn.icon-icons.com/icons2/3150/PNG/512/calendar_icon_192645.png",
+            buttonImageOnly: true,
+            changeMonth: true,
+            changeYear: true
+
+        });
+        $(".ui-datepicker-trigger").css("width", "40px");
+        $(".ui-datepicker-trigger").css("height", "45px");
+
+        $("#txtFechaNacimiento").parent().css("position", "relative");
+        $(".ui-datepicker-trigger").css({
+            "right": "0",
+            "top": "0"
+        });
+    });
+</script>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,7 +18,8 @@ namespace BL
                 using (DL.BVAguilar_ThtecEntities context = new DL.BVAguilar_ThtecEntities())
                 {
                     persona.FechaDeAlta = DateTime.Now;
-                    var fechaNacimiento = DateTime.Parse(persona.FechaDeNacimiento);
+                    DateTime fechaNacimiento = DateTime.ParseExact(persona.FechaDeNacimiento, "MM/dd/yyyy", CultureInfo.InvariantCulture);
+
                     var query = context.AddPersona(persona.Nombre,
                                                    persona.ApellidoPaterno,
                                                    persona.ApellidoMaterno,
@@ -57,7 +59,8 @@ namespace BL
             {
                 using (DL.BVAguilar_ThtecEntities context = new DL.BVAguilar_ThtecEntities())
                 {
-                    var fechaNacimiento = DateTime.Parse(persona.FechaDeNacimiento);
+                    DateTime fechaNacimiento = DateTime.ParseExact(persona.FechaDeNacimiento, "MM/dd/yyyy", CultureInfo.InvariantCulture);
+
                     var query = context.UpdatePersona(persona.IdPersona,
                                                       persona.Nombre,
                                                       persona.ApellidoPaterno,

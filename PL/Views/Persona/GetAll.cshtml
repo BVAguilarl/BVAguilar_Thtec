@@ -4,12 +4,16 @@
     ViewBag.Title = "GetAll";
 }
 
+<br />
+
 <div class="container">
     <div class="row">
         <div class="col-md-12">
             <h2>Persona</h2>
         </div>
     </div>
+
+    <br />
 
     <div class="row">
         <div class="col-md-12">
@@ -18,24 +22,25 @@
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-md-1 col-md-offset-11">
-            @Html.ActionLink("+", "Form", "Persona", htmlAttributes: new { @class = "btn btn-success" })
+    <div class="row justify-content-end">
+        <div class="col-md-1 ">
+            @Html.ActionLink(" + ", "Form", "Persona", htmlAttributes: new { @class = "btn btn-success", style = "font-size:20px" })
         </div>
     </div>
 
+    <hr />
     <br />
 
     @if (Model.Personas.Count > 0)
     {
         <div class="row">
             <div class="col-md-12">
-                <div class="table-responsive-sm table-responsive">
-                    <table class="table table-bordered">
+                <div class="tabletable-responsive">
+                    <table class="table table-hover">
                         <thead>
                             <tr>
                                 <th class="text-center">Editar</th>
-                                <th class="hidden">IdPersona</th>
+                                <th class="visually-hidden">IdPersona</th>
                                 <th class="text-center">Nombre</th>
                                 <th class="text-center">Telefono</th>
                                 <th class="text-center">Correo</th>
@@ -52,17 +57,17 @@
                             {
                                 <tr>
                                     <td class="text-center">
-                                        <a class="btn btn-warning glyphicon glyphicon-edit" href="@Url.Action("Form", "Persona", new { IdPersona = persona.IdPersona})"></a>
+                                        <a class="btn btn-warning glyphicon glyphicon-edit" href="@Url.Action("Form", "Persona", new { IdPersona = persona.IdPersona})">  <i class="bi bi-pencil"></i> </a>
                                     </td>
-                                    <td class="hidden">@persona.IdPersona</td>
-                                    <td>@persona.Nombre @persona.ApellidoPaterno @persona.ApellidoMaterno </td>
+                                    <td class="visually-hidden">@persona.IdPersona</td>
+                                    <td class="text-center">@persona.Nombre @persona.ApellidoPaterno @persona.ApellidoMaterno </td>
                                     <td class="text-center">@persona.Telefono</td>
                                     <td class="text-center">@persona.Correo</td>
                                     <td class="text-center">@persona.Contraseña</td>
                                     <td class="text-center">@persona.FechaDeNacimiento</td>
                                     <td class="text-center">@persona.FechaDeAlta</td>
                                     <td class="text-center">
-                                        <a class="btn btn-danger glyphicon glyphicon-trash" href="@Url.Action("Delete", "Persona", new {persona.IdPersona})" onclick="return confirm('Estas seguro que deseas eliminar este registro?');"></a>
+                                        <a class="btn btn-danger glyphicon glyphicon-trash" href="@Url.Action("Delete", "Persona", new {persona.IdPersona})" onclick="return confirm('Estas seguro que deseas eliminar este registro?');"> <i class="bi bi-trash"></i> </a>
                                     </td>
                                 </tr>
                             }
