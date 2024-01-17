@@ -11,14 +11,14 @@ namespace Ejercicio3
         string MetodoA();
         string MetodoB();
     }
-    
+
     class ClaseB : InterfazA
     {
-        public string MetodoA()
+        virtual public string MetodoA()
         {
             return "Hola clase: B método A";
         }
-          
+
         public string MetodoB()
         {
             return "Hola clase: B método B";
@@ -27,23 +27,23 @@ namespace Ejercicio3
 
     class ClaseA : ClaseB
     {
-        public string Ajuste()
+        override public string MetodoA()
         {
-            return MetodoA() + " \nHola clase: A método: A - Termine mi prueba";
+            return base.MetodoA() + " \nHola clase: A método: A - Termine mi prueba";
         }
     }
 
-   
+
     internal class Program
-    {  
+    {
 
         static void Main(string[] args)
         {
             ClaseA claseA = new ClaseA();
 
-            Console.WriteLine(claseA.Ajuste());
             Console.WriteLine(claseA.MetodoB());
-            
+            Console.WriteLine(claseA.MetodoA());
+
             Console.ReadLine();
         }
     }

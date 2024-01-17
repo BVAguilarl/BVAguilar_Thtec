@@ -55,11 +55,11 @@ else
             @Html.TextBoxFor(model => Model.Nombre, new { @class = "form-control" })
         </div>
         <div class="col-md-4">
-            @Html.LabelFor(model => Model.ApellidoPaterno, new { @class = "text-center" })
+            <label> Apellido Paterno</label>
             @Html.TextBoxFor(model => Model.ApellidoPaterno, new { @class = "form-control" })
         </div>
         <div class="col-md-4">
-            @Html.LabelFor(model => Model.ApellidoMaterno, new { @class = "text-center" })
+            <label> Apellido Materno</label>
             @Html.TextBoxFor(model => Model.ApellidoMaterno, new { @class = "form-control" })
         </div>
     </div>
@@ -85,7 +85,7 @@ else
 
     <div class="row">
         <div class="col-md-4">
-            @Html.LabelFor(model => Model.FechaDeNacimiento, new { @class = "text-center" })}
+            <label> Fecha de Nacimiento</label>
 
             <div style="display: flex; align-items: center;">
                 @Html.TextBoxFor(model => Model.FechaDeNacimiento, new { @class = "form-control", @id = "txtFechaNacimiento" })
