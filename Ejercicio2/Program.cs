@@ -13,7 +13,8 @@ namespace Ejercicio2
         {
             // Registrar el precio de “n” productos e imprimir el producto de mayor precio y el de menor precio.
 
-            decimal precioMaximo, precioMinimo;
+            decimal precioMaximo = decimal.MinValue;
+            decimal precioMinimo = decimal.MaxValue;
             int productoMaximo = 0, productoMinimo = 0;
 
             Console.WriteLine("Número de productos");
@@ -24,24 +25,21 @@ namespace Ejercicio2
                 Console.WriteLine($"Precio del producto {i}:");
                 decimal precioActual = Convert.ToDecimal(Console.ReadLine());
 
-                // Actualizar precio máximo y mínimo según sea necesario
-                if (precioActual > decimal.MinValue)
+                if (precioActual > precioMaximo)
                 {
                     precioMaximo = precioActual;
                     productoMaximo = i;
                 }
 
-                if (precioActual < decimal.MaxValue)
+                if (precioActual < precioMinimo)
                 {
                     precioMinimo = precioActual;
                     productoMinimo = i;
                 }
             }
 
-            Console.WriteLine("El producto de mayor precio es el: " + productoMaximo + " $" + +precioMaximo);
-
+            Console.WriteLine("El producto de mayor precio es el: " + productoMaximo + " $" + precioMaximo);
             Console.WriteLine("El producto de menor precio es el: " + productoMinimo + " $" + precioMinimo);
-
 
             Console.ReadKey();
 
